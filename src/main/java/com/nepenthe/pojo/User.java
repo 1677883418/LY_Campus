@@ -13,10 +13,10 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class User {
     private Integer id;
-    private String nikeName;
     private String avatarUrl;
     private String openId;
-    
+    private Integer studentId;
+    private String nikeName;
 
 
 }

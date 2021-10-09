@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nepenthe.dao.UserMapper">
+    <insert id="addUser" parameterType="com.nepenthe.pojo.User">
+        insert into teamTogether.user(id, is_card, card_id, is_student, student_id, openid)
+        values (#{id}, #{isCard}, #{cardId}, #{isStudent}, #{studentId}, #{openId})
+    </insert>
+    <select id="queryUserByopenId" resultType="com.nepenthe.pojo.User">
+        select * from teamTogether.user where openid = #{openId}
+    </select>
+    >
+</mapper>
