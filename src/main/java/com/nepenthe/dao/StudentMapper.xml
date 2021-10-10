@@ -20,8 +20,8 @@
         set studentId= #{studentId},
             name=#{name},
             idCard=#{idCard},
-            className=#{bj},
-            where id = #{id};
+            className=#{bj}
+        where id = #{id};
     </update>
     <!--根据Id查询学生-->
     <select id="queryStudentById" resultType="com.nepenthe.pojo.Students">

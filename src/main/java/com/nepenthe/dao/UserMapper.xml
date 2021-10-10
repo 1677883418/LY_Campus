@@ -7,8 +7,20 @@
         insert into teamTogether.user(id, is_card, card_id, is_student, student_id, openid)
         values (#{id}, #{isCard}, #{cardId}, #{isStudent}, #{studentId}, #{openId})
     </insert>
+    <update id="updateUser" parameterType="com.nepenthe.pojo.User">
+        update teamTogether.user
+        set is_card    =#{user.isCard},
+            card_id    =#{user.CardId},
+            is_student =#{user.isStudent},
+            card_id    =#{user.studentId}
+        where openid = #{user.openId}
+
+    </update>
+
     <select id="queryUserByopenId" resultType="com.nepenthe.pojo.User">
-        select * from teamTogether.user where openid = #{openId}
+        select *
+        from teamTogether.user
+        where openid = #{openId}
     </select>
-    >
+
 </mapper>
