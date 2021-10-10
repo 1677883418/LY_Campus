@@ -9,6 +9,9 @@
     <bean id="studentServiceImpl" class="com.nepenthe.service.StudentServiceImpl">
         <property name="studentMapper" ref="studentMapper"/>
     </bean>
+    <bean id="userServiceImpl" class="com.nepenthe.service.UserServiceImpl">
+        <property name="userMapper" ref="userMapper"/>
+    </bean>
 
 
     <!--3.声明式事务配置-->

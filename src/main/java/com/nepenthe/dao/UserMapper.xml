@@ -14,7 +14,6 @@
             is_student =#{user.isStudent},
             card_id    =#{user.studentId}
         where openid = #{user.openId}
-
     </update>
 
     <select id="queryUserByopenId" resultType="com.nepenthe.pojo.User">

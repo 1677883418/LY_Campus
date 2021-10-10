@@ -17,8 +17,8 @@ public class User {
     private String avatarUrl;
     private String openId;
     private boolean isCard;
-    private String CardId;
-    private boolean isCard;
+    private String cardId;
+    private boolean isStudent;
     private Integer studentId;
 
 

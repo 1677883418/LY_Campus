@@ -12,7 +12,7 @@ public interface UserService {
      *
      * @return 添加是否成功
      */
-    int addUser(@Param("user") User user);
+    boolean addUser(@Param("user") User user);
 
     /**
      *
