@@ -2,10 +2,12 @@ package com.nepenthe.service;
 
 import com.nepenthe.dao.UserMapper;
 import com.nepenthe.pojo.User;
+import org.springframework.stereotype.Service;
 
 /**
  * @author goodsir
  */
+@Service
 public class UserServiceImpl implements UserService {
 
     /**

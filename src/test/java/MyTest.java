@@ -1,10 +1,8 @@
 import cn.hutool.http.HttpUtil;
 import cn.hutool.json.JSONObject;
 import cn.hutool.json.JSONUtil;
-import org.junit.Test;
 
 public class MyTest {
-    @Test
     public void test() {
         String appId = "wx3912bc23bde5849f";
         String secret = "f9d04bd4a21553bf55acd58b23855621";

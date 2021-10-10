@@ -1,13 +1,17 @@
 package com.nepenthe.dao;
 
 import com.nepenthe.pojo.Students;
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 /**
  * @author goodsir
  */
+@Mapper
+@Repository
 public interface StudentMapper {
     /**
      * @return 增加一个学生

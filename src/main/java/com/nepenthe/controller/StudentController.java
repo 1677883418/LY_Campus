@@ -6,7 +6,6 @@ import com.nepenthe.service.StudentService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,15 +23,13 @@ public class StudentController {
      * controller 调 service层
      */
     @Autowired
-    @Qualifier("studentServiceImpl")
     private StudentService studentService;
 
     /**
      * 查询全部的学生,并且返回到一个学生展示页面
      */
     @GetMapping("/allStudent")
-    @ApiOperation(value = "查询全部用户信息", httpMethod = "GET", notes = "查询全表学生")
-    @ResponseBody
+    @ApiOperation(value = "查询全部用户信息", notes = "查询全表学生")
     public String list(Model model, HttpServletResponse res) {
         res.setContentType("application/json; charset=UTF-8");
         List<Students> students = studentService.queryAllStudent();
@@ -42,8 +39,8 @@ public class StudentController {
     /**
      * @return 添加学生的请求
      */
-    @RequestMapping("addStudent")
-    @ApiOperation(value = "添加用户", httpMethod = "POST", notes = "添加新用户")
+    @PostMapping("addStudent")
+    @ApiOperation(value = "添加用户", notes = "添加新用户")
     public String addStudent(Students students) {
         System.out.println("Students = " + students);
         studentService.addStudent(students);
@@ -54,8 +51,8 @@ public class StudentController {
     /**
      * @return 修改学生
      */
-    @RequestMapping("/updateStudent")
-    @ApiOperation(value = "修改学生信息", httpMethod = "POST", notes = "修改学生信息")
+    @PostMapping("/updateStudent")
+    @ApiOperation(value = "修改学生信息", notes = "修改学生信息")
     public String updateStudent(Students students) {
         System.out.println("Students = " + students);
         studentService.updateStudent(students);
@@ -66,8 +63,8 @@ public class StudentController {
      * @param id
      * @return 根据id删除学生
      */
-    @RequestMapping("/deleteStudent/{id}")
-    @ApiOperation(value = "根据id删除学生", httpMethod = "GET", notes = "删除学生")
+    @GetMapping("/deleteStudent/{id}")
+    @ApiOperation(value = "根据id删除学生", notes = "删除学生")
     public String deleteStudent(@PathVariable("id") int id) {
         studentService.deleteStudent(id);
         return "redirect:/Student/allStudent";
@@ -77,8 +74,8 @@ public class StudentController {
      * @return 通过id查询学生
      */
 
-    @RequestMapping("/queryStudent/{id}")
-    @ApiOperation(value = "根据id查询学生", httpMethod = "GET", notes = "根据id查询学生")
+    @GetMapping("/queryStudent/{id}")
+    @ApiOperation(value = "根据id查询学生", notes = "根据id查询学生")
     public String queryStudent(@PathVariable("id") int id) {
         Students students = studentService.queryStudentById(id);
         return JSONUtil.toJsonStr(students);

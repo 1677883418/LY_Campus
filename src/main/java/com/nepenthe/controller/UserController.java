@@ -31,8 +31,7 @@ public class UserController {
      * 添加新用户
      */
     @PostMapping("/addUser")
-    @ApiOperation(value = "添加新用户", httpMethod = "Post", notes = "添加新用户")
-    @ResponseBody
+    @ApiOperation(value = "添加新用户", httpMethod = "POST", notes = "添加新用户")
     public ResultInfo addUser(@RequestBody User user) {
         //判断添加是否成功
         if (userService.addUser(user)) {
@@ -46,8 +45,7 @@ public class UserController {
      * 根据openId查询用户信息
      */
     @GetMapping("/queryUserByopenId/{openId}")
-    @ApiOperation(value = "查询用户", httpMethod = "GET", notes = "根据openId查询用户信息")
-    @ResponseBody
+    @ApiOperation(value = "查询用户",  notes = "根据openId查询用户信息")
     public ResultInfo queryUserByopenId(@PathVariable("openId") String openId) {
         User user = userService.queryUserByopenId(openId);
         if (user != null) {
@@ -61,8 +59,7 @@ public class UserController {
      * 根据jsCode获取登陆状态
      */
     @PostMapping("/login")
-    @ApiOperation(value = "登陆", httpMethod = "Post", notes = "获取登陆状态")
-    @ResponseBody
+    @ApiOperation(value = "登陆",  notes = "获取登陆状态")
     public ResultInfo login(@ApiParam(name = "jsCode", value = "登录时获取的code") @RequestBody String jsCode) {
         //小程序appId和secret
         String appId = "wx3912bc23bde5849f";

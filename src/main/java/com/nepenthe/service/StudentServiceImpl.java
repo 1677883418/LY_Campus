@@ -2,12 +2,14 @@ package com.nepenthe.service;
 
 import com.nepenthe.dao.StudentMapper;
 import com.nepenthe.pojo.Students;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 /**
  * @author goodsir
  */
+@Service
 public class StudentServiceImpl implements StudentService {
 
     /**
