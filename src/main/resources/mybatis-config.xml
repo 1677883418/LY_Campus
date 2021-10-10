@@ -8,9 +8,12 @@
         <package name="com.nepenthe.pojo"/>
     </typeAliases>
 
-     <mappers>
+    <mappers>
         <mapper class="com.nepenthe.dao.StudentMapper"/>
     </mappers>
 
+    <mappers>
+        <mapper class="com.nepenthe.dao.UserMapper"/>
+    </mappers>
 
 </configuration>
