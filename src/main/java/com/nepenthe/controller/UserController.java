@@ -68,13 +68,13 @@ public class UserController {
         String appId = "wx3912bc23bde5849f";
         String secret = "f9d04bd4a21553bf55acd58b23855621";
         //获取用户token和openid
-        String s = HttpUtil.get("https://api.weixin.qq.com/sns/jscode2session?appid=" + appId + "&secret=" + secret + "&js_code=" + jsCode + "&grant_type=authorization_code");
-        JSONObject jsonObject = JSONUtil.parseObj(s);
+        String res = HttpUtil.get("https://api.weixin.qq.com/sns/jscode2session?appid=" + appId + "&secret=" + secret + "&js_code=" + jsCode + "&grant_type=authorization_code");
+        JSONObject jsonObject = JSONUtil.parseObj(res);
         String openId = jsonObject.getStr("openid");
-        String sessionKey = jsonObject.getStr("session_key");
-        //用户是否登陆
+        //是否获取到openId
         if (openId != null) {
-            return new ResultInfo(1, "登陆成功");
+            return new ResultInfo(1, res);
+
         } else {
             return new ResultInfo(0, "登陆失败,请稍后重试");
         }
