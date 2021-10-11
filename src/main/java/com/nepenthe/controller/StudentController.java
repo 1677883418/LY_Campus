@@ -1,11 +1,14 @@
 package com.nepenthe.controller;
 
+import cn.hutool.json.JSONObject;
 import cn.hutool.json.JSONUtil;
 import com.nepenthe.pojo.Students;
 import com.nepenthe.service.StudentService;
+import com.nepenthe.utils.Result;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,6 +26,7 @@ public class StudentController {
      * controller 调 service层
      */
     @Autowired
+    @Qualifier("studentServiceImpl")
     private StudentService studentService;
 
     /**
@@ -76,9 +80,8 @@ public class StudentController {
 
     @GetMapping("/queryStudent/{id}")
     @ApiOperation(value = "根据id查询学生", notes = "根据id查询学生")
-    public String queryStudent(@PathVariable("id") int id) {
-        Students students = studentService.queryStudentById(id);
-        return JSONUtil.toJsonStr(students);
+    public Result<Students> queryStudent(@PathVariable("id") int id) {
+        return Result.ofSuccess(studentService.queryStudentById(id));
 
     }
 }

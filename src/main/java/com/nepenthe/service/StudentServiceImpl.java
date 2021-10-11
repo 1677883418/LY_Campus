@@ -2,6 +2,7 @@ package com.nepenthe.service;
 
 import com.nepenthe.dao.StudentMapper;
 import com.nepenthe.pojo.Students;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,6 +16,7 @@ public class StudentServiceImpl implements StudentService {
     /**
      * service调dao层:组合dao层
      */
+    @Autowired
     private StudentMapper studentMapper;
 
     public void setStudentMapper(StudentMapper studentMapper) {

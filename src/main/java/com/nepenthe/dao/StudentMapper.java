@@ -10,7 +10,6 @@ import java.util.List;
 /**
  * @author goodsir
  */
-@Mapper
 @Repository
 public interface StudentMapper {
     /**

@@ -22,7 +22,7 @@ spring:
     filters: stat,wall,slf4j
 
   servlet:
-  #文件上传限制
+    #文件上传限制
     multipart:
       enabled: true
       max-file-size: 2MB

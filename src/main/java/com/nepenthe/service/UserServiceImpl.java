@@ -2,6 +2,7 @@ package com.nepenthe.service;
 
 import com.nepenthe.dao.UserMapper;
 import com.nepenthe.pojo.User;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -13,6 +14,7 @@ public class UserServiceImpl implements UserService {
     /**
      * service调dao层:组合dao层
      */
+    @Autowired
     private UserMapper userMapper;
 
     public void setUserMapper(UserMapper userMapper) {
@@ -20,7 +22,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public boolean addUser(User user) {
+    public User addUser(User user) {
         return userMapper.addUser(user);
     }
 

@@ -8,7 +8,6 @@ import org.springframework.stereotype.Repository;
 /**
  * @author goodsir
  */
-@Mapper
 @Repository
 public interface UserMapper {
     /**
@@ -16,7 +15,7 @@ public interface UserMapper {
      *
      * @return 添加是否成功
      */
-    boolean addUser(@Param("user") User user);
+    User addUser(@Param("user") User user);
 
     /**
      * @param user 需要更改的用户
