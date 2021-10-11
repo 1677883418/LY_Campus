@@ -6,6 +6,7 @@ import cn.hutool.json.JSONUtil;
 import com.nepenthe.pojo.ResultInfo;
 import com.nepenthe.pojo.User;
 import com.nepenthe.service.UserService;
+import com.nepenthe.utils.Result;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -32,27 +33,36 @@ public class UserController {
      */
     @PostMapping("/addUser")
     @ApiOperation(value = "添加新用户", httpMethod = "POST", notes = "添加新用户")
-    public ResultInfo addUser(@RequestBody User user) {
-        //判断添加是否成功
-        if (userService.addUser(user)) {
-            return new ResultInfo(1, "注册成功");
-        } else {
-            return new ResultInfo(0, "注册失败,请检查信息后重试");
-        }
+    public Result<Object> addUser(@RequestBody User user) {
+        userService.addUser(user);
+
+        /* 直接返回成功即可，有问题直接在实现曾的方法里面抛异常或者返回失败消息
+         * 例：在实现层返回 return Result.ofFail("注册失败,请检查信息后重试");
+         */
+        return Result.ofSuccess();
+//        //判断添加是否成功
+//        if (userService.addUser(user)) {
+//            return new ResultInfo(1, "注册成功");
+//        } else {
+//            return new ResultInfo(0, "注册失败,请检查信息后重试");
+//        }
     }
 
     /**
      * 根据openId查询用户信息
      */
     @GetMapping("/queryUserByopenId/{openId}")
-    @ApiOperation(value = "查询用户",  notes = "根据openId查询用户信息")
-    public ResultInfo queryUserByopenId(@PathVariable("openId") String openId) {
-        User user = userService.queryUserByopenId(openId);
+    @ApiOperation(value = "查询用户", notes = "根据openId查询用户信息")
+    public Result<User> queryUserByopenId(@PathVariable("openId") String openId) {
+        /*同理也是直接返回*/
+        return Result.ofSuccess(userService.queryUserByopenId(openId));
+/*
+
         if (user != null) {
             return new ResultInfo(1, JSONUtil.toJsonStr(user));
         } else {
             return new ResultInfo(0, "未查询到该用户信息");
-        }
+        }*/
     }
 
     /**
