@@ -5,6 +5,9 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
+/**
+ * @author goodsir
+ */
 @Mapper
 @Repository
 public interface UserMapper {
@@ -26,5 +29,5 @@ public interface UserMapper {
      * @param openId 小程序用户标识
      * @return 根据openId查询库中有无该对象
      */
-    User queryUserByopenId(@Param("openId") String openId);
+    User queryUserByOpenId(@Param("openId") String openId);
 }

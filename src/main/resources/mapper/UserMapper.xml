@@ -16,9 +16,9 @@
         where openid = #{user.openId}
     </update>
 
-    <select id="queryUserByopenId" resultType="com.nepenthe.pojo.User">
+    <select id="queryUserByOpenId" resultType="com.nepenthe.pojo.User">
         select *
-        from teamTogether.user
+        from campus.user
         where openid = #{openId}
     </select>
 

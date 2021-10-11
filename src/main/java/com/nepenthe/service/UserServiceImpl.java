@@ -30,8 +30,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User queryUserByopenId(String openId) {
-        return userMapper.queryUserByopenId(openId);
+    public User queryUserByOpenId(String openId) {
+        return userMapper.queryUserByOpenId(openId);
     }
 
 
