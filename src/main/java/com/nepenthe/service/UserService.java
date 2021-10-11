@@ -15,7 +15,6 @@ public interface UserService {
     boolean addUser(@Param("user") User user);
 
     /**
-     *
      * @param user 需要更改的用户
      * @return 更改是否成功
      */

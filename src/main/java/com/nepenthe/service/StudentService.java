@@ -1,7 +1,6 @@
 package com.nepenthe.service;
 
 import com.nepenthe.pojo.Students;
-import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -12,7 +11,7 @@ public interface StudentService {
     /**
      * @return 增加一个学生
      */
-    int addStudent( Students student);
+    int addStudent(Students student);
 
     /**
      * @param id 序号
