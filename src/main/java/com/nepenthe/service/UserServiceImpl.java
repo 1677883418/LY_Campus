@@ -22,12 +22,12 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User addUser(User user) {
+    public Integer addUser(User user) {
         return userMapper.addUser(user);
     }
 
     @Override
-    public int updateUser(User user) {
+    public Integer updateUser(User user) {
         return userMapper.updateUser(user);
     }
 

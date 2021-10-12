@@ -12,13 +12,13 @@ public interface UserService {
      *
      * @return 添加是否成功
      */
-    User addUser(@Param("user") User user);
+    Integer addUser(@Param("user") User user);
 
     /**
      * @param user 需要更改的用户
      * @return 更改是否成功
      */
-    int updateUser(@Param("user") User user);
+    Integer updateUser(@Param("user") User user);
 
     /**
      * @param openId 小程序用户标识

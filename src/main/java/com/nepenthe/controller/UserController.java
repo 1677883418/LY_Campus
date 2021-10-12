@@ -6,7 +6,6 @@ import cn.hutool.json.JSONUtil;
 import com.nepenthe.pojo.User;
 import com.nepenthe.service.UserService;
 import com.nepenthe.utils.Result;
-import com.nepenthe.utils.SnowflakeIdWorker;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -32,15 +31,19 @@ public class UserController {
 
     /**
      * 添加新用户
+     *
+     * @return
      */
     @PostMapping("/addUser")
     @ApiOperation(value = "添加新用户", httpMethod = "POST", notes = "添加新用户")
-    public Result<User> addUser(@RequestBody User user) {
-        System.out.println(user);
+    public Result<Integer> addUser(@RequestBody JSONObject res) {
+        System.out.println(res);
+        User user = JSONUtil.toBean(res, User.class);
         /* 直接返回成功即可，有问题直接在实现曾的方法里面抛异常或者返回失败消息
          * 例：在实现层返回 return Result.ofFail("注册失败,请检查信息后重试");
          */
-        return Result.ofSuccess(userService.addUser(user));
+        return null;
+//        return Result.ofSuccess(userService.addUser(user));
     }
 
     /**
@@ -49,10 +52,10 @@ public class UserController {
 
     @GetMapping("/queryUserByOpenId/{openId}")
     @ApiOperation(value = "查询用户", notes = "根据openId查询用户信息")
-    public Result<Object> queryUserByOpenId(@PathVariable("openId") String openId) {
+    public Result<User> queryUserByOpenId(@PathVariable("openId") String openId) {
+
         /*同理也是直接返回*/
         return Result.ofSuccess(userService.queryUserByOpenId(openId));
-
     }
 
     /**
