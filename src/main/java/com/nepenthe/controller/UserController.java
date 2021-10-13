@@ -36,14 +36,13 @@ public class UserController {
      */
     @PostMapping("/addUser")
     @ApiOperation(value = "添加新用户", httpMethod = "POST", notes = "添加新用户")
-    public Result<Integer> addUser(@RequestBody JSONObject res) {
-        System.out.println(res);
-        User user = JSONUtil.toBean(res, User.class);
+    public Result<Integer> addUser(@RequestBody User user) {
+        System.out.println(user);
+//        User user = JSONUtil.toBean(res, User.class);
         /* 直接返回成功即可，有问题直接在实现曾的方法里面抛异常或者返回失败消息
          * 例：在实现层返回 return Result.ofFail("注册失败,请检查信息后重试");
          */
-        return null;
-//        return Result.ofSuccess(userService.addUser(user));
+        return Result.ofSuccess(userService.addUser(user));
     }
 
     /**
