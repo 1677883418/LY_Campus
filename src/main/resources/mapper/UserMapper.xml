@@ -4,17 +4,19 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.nepenthe.dao.UserMapper">
     <insert id="addUser" parameterType="com.nepenthe.pojo.User">
-        insert into campus.user(id, nike_name, avatar_url, is_card, card_id, is_student, student_id, openid)
-        values (#{user.id}, #{user.nikeName}, #{user.avatarUrl}, #{user.isCard}, #{user.cardId}, #{user.isStudent},
+        insert into campus.user(id, nick_name, avatar_url, is_card, card_id, is_student, student_id, openid)
+        values (#{user.id}, #{user.nickName}, #{user.avatarUrl}, #{user.isCard}, #{user.cardId}, #{user.isStudent},
                 #{user.studentId}, #{user.openId});
     </insert>
     <update id="updateUser" parameterType="com.nepenthe.pojo.User">
         update campus.user
-        set is_card    =#{user.isCard},
-            card_id    =#{user.CardId},
+        set nick_name  =#{user.nickName},
+            avatar_url =#{user.avatarUrl},
+            is_card    =#{user.isCard},
+            card_id    =#{user.cardId},
             is_student =#{user.isStudent},
-            card_id    =#{user.studentId}
-        where openid = #{user.openId}
+            student_id =#{user.studentId}
+        where openid = #{user.openId};
     </update>
 
     <select id="queryUserByOpenId" resultType="com.nepenthe.pojo.User">

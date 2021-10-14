@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class User {
     private Integer id;
-    private String nikeName;
+    private String nickName;
     private String avatarUrl;
     private String openId;
     private boolean isCard;

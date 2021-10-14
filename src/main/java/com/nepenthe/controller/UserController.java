@@ -71,4 +71,11 @@ public class UserController {
         //返回获取到的openId和token
         return Result.ofSuccess(JSONUtil.parseObj(res));
     }
+
+    @PostMapping("/updateUser")
+    @ApiOperation(value = "更新用户信息", notes = "更新用户信息")
+    public Result<Integer> updateUser(@ApiParam(name = "user", value = "要修改的对象") @RequestBody User user) {
+        System.out.println(user);
+        return Result.ofSuccess(userService.updateUser(user));
+    }
 }
