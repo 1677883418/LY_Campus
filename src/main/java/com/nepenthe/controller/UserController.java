@@ -22,9 +22,9 @@ import org.springframework.web.bind.annotation.*;
 @Api(tags = "用户接口")
 public class UserController {
 
-    @Value("wx.appId")
+    @Value("${wx.appId}")
     String appId;
-    @Value("wx.secret")
+    @Value("${wx.secret}")
     String secret;
     /**
      * controller 调 service层
@@ -43,10 +43,11 @@ public class UserController {
     @ApiOperation(value = "添加新用户", httpMethod = "POST", notes = "添加新用户")
     public Result<Integer> addUser(@RequestBody User user) {
         System.out.println(user);
-//        User user = JSONUtil.toBean(res, User.class);
-        /* 直接返回成功即可，有问题直接在实现曾的方法里面抛异常或者返回失败消息
-         * 例：在实现层返回 return Result.ofFail("注册失败,请检查信息后重试");
-         */
+        /*
+        User user = JSONUtil.toBean(res, User.class);
+        直接返回成功即可，有问题直接在实现层的方法里面抛异常或者返回失败消息
+        例：在实现层返回 return Result.ofFail("注册失败,请检查信息后重试");
+        */
         return Result.ofSuccess(userService.addUser(user));
     }
 
@@ -68,9 +69,6 @@ public class UserController {
     @PostMapping("/login")
     @ApiOperation(value = "登陆", notes = "获取登陆状态")
     public Result<JSONObject> login(@ApiParam(name = "jsCode", value = "登录时获取的code") @RequestBody JSONObject jsCode) {
-        //小程序appId和secret
-//        String appId = "wx3912bc23bde5849f";
-//        String secret = "f9d04bd4a21553bf55acd58b23855621";
         //获取用户token和openid
         String res = HttpUtil.get("https://api.weixin.qq.com/sns/jscode2session?appid=" + appId + "&secret=" + secret + "&js_code=" + jsCode.getStr("jsCode") + "&grant_type=authorization_code");
         //返回获取到的openId和token
