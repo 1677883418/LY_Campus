@@ -35,3 +35,7 @@ mybatis:
 mapper:
   not-empty: false
   identity: MYSQL
+
+wx:
+  appId: wx3912bc23bde5849f
+  secret: f9d04bd4a21553bf55acd58b23855621

@@ -11,6 +11,7 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -21,6 +22,10 @@ import org.springframework.web.bind.annotation.*;
 @Api(tags = "用户接口")
 public class UserController {
 
+    @Value("wx.appId")
+    String appId;
+    @Value("wx.secret")
+    String secret;
     /**
      * controller 调 service层
      */
@@ -64,8 +69,8 @@ public class UserController {
     @ApiOperation(value = "登陆", notes = "获取登陆状态")
     public Result<JSONObject> login(@ApiParam(name = "jsCode", value = "登录时获取的code") @RequestBody JSONObject jsCode) {
         //小程序appId和secret
-        String appId = "wx3912bc23bde5849f";
-        String secret = "f9d04bd4a21553bf55acd58b23855621";
+//        String appId = "wx3912bc23bde5849f";
+//        String secret = "f9d04bd4a21553bf55acd58b23855621";
         //获取用户token和openid
         String res = HttpUtil.get("https://api.weixin.qq.com/sns/jscode2session?appid=" + appId + "&secret=" + secret + "&js_code=" + jsCode.getStr("jsCode") + "&grant_type=authorization_code");
         //返回获取到的openId和token
