@@ -1,8 +1,0 @@
-{
-  "properties": [
-    {
-      "name": "wx.appId",
-      "type": "java.lang.String",
-      "description": "小程序appId."
-  }
-] }
