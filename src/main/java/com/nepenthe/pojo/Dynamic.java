@@ -4,6 +4,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
+import java.util.List;
+
 /**
  * @author goodsir
  */
@@ -12,7 +15,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Dynamic {
     private Integer id;
-    private Integer userId;
+    private Integer userid;
     private String dynamicText;
-    private String dynamicTime;
+    private LocalDateTime dynamicTime;
+
 }
