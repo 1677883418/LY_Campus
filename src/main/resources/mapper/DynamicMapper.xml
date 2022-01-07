@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.nepenthe.dao.DynamicMapper">
-    <insert id="addDynamic" parameterType="com.nepenthe.pojo.Dynamic">
-
+    <insert id="addDynamic" parameterType="com.nepenthe.pojo.Dynamic" keyProperty="id" keyColumn="id"
+            useGeneratedKeys="true">
+        insert into campus.dynamic(user_id, dynamicText, dynamicTime)
+        values (#{dynamic.userid}, #{dynamic.dynamicText}, #{dynamic.dynamicTime});
     </insert>
     <update id="updateDynamic">
 

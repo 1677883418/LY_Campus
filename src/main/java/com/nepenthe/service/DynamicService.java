@@ -13,7 +13,7 @@ public interface DynamicService {
      * @param dynamic
      * @return 添加的动态
      */
-    Dynamic addDynamic(@Param("dynamic") Dynamic dynamic);
+    Integer addDynamic(@Param("dynamic") Dynamic dynamic);
 
     /**
      * @param dynamicId 动态Id

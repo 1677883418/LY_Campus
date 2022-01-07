@@ -8,6 +8,7 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -25,8 +26,15 @@ public class DynamicController {
 
     @PostMapping("/addDynamic")
     @ApiOperation(value = "添加新动态", httpMethod = "POST", notes = "添加新动态")
-    public Result<Dynamic> addDynamic(Dynamic dynamic) {
-        return Result.ofSuccess(dynamicService.addDynamic(dynamic));
+    public Result<Dynamic> addDynamic(@RequestParam("dynamicImage") MultipartFile dynamicImage, @RequestParam("dynamicText") String dynamicText, @RequestParam("userId") String userId) {
+        System.out.println(dynamicImage);
+        System.out.println(dynamicText);
+        System.out.println(userId);
+
+
+//        return Result.ofSuccess(dynamicService.addDynamic(dynamic));
+//        return Result.ofSuccess(dynamic);
+        return null;
     }
 
     @GetMapping("/deleteDynamic")

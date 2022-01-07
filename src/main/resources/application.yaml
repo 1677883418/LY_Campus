@@ -7,12 +7,15 @@ logging:
     org.springframework: WARN
 
 spring:
+  http:
+    multipart:
+      enabled: false
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     driverClassName: org.mariadb.jdbc.Driver
     url: jdbc:mariadb://1.117.99.103:3306/campus
     username: Campus
-    password: rTwd5HPyGAz7cAxH
+    password: KWG652J7RHW5S4Ri
     # 初始化大小，最小，最大
     initialSize: 1
     minIdle: 3
@@ -25,7 +28,7 @@ spring:
     #文件上传限制
     multipart:
       enabled: true
-      max-file-size: 2MB
+      max-file-size: 20MB
       max-request-size: 10MB
 mybatis:
   type-aliases-package: com.nepenthe.pojo
@@ -35,7 +38,15 @@ mybatis:
 mapper:
   not-empty: false
   identity: MYSQL
-
+#微信小程序
 wx:
   appId: wx3912bc23bde5849f
   secret: f9d04bd4a21553bf55acd58b23855621
+  #OSS
+OSS:
+  file:
+    endpoint: oss-accelerate.aliyuncs.com #不同的服务器，地址不同
+    keyId: LTAI5tSiXjhHrqz7GKaGjCLX #AccessKey  / 刷新Token
+    keySecret: ik5nxDieyShio8HS5a9v5bJP0As6Tl #SecretKey
+    bucketName: zxy1677883418 #Server 存储端 Endpoint
+    fileHost: Campus  #云存储使用的目录

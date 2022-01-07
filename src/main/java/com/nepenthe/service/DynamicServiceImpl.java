@@ -16,7 +16,7 @@ public class DynamicServiceImpl implements DynamicService {
     private DynamicMapper dynamicMapper;
 
     @Override
-    public Dynamic addDynamic(Dynamic dynamic) {
+    public Integer addDynamic(Dynamic dynamic) {
         return dynamicMapper.addDynamic(dynamic);
     }
 

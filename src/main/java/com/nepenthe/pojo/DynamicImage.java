@@ -19,5 +19,5 @@ public class DynamicImage {
     private Integer id;
     private Integer dynamicId;
     private String dynamicImageUrl;
-    private LocalDateTime dynamicTime;
+    private LocalDateTime uploadTime;
 }
