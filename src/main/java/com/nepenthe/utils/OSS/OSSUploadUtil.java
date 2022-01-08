@@ -72,7 +72,7 @@ public class OSSUploadUtil {
      * @Description: OSS单文件上传
      */
     public static String uploadFile(File file, String fileType) {
-        //文件名，根据UUID来
+        //文件名，根据openId分,
         String fileName = fileHost + UUID.randomUUID().toString().toUpperCase().replace("-", "") + "." + fileType;
         return putObject(file, fileType, fileName);
     }
