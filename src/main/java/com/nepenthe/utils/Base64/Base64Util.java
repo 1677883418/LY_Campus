@@ -19,6 +19,7 @@ public class Base64Util {
      * base64转MultipartFile
      */
     public static MultipartFile base64ToMultipart(String base64) {
+        base64 = base64.substring(base64.indexOf(",")+1);
         String format = checkImageBase64Format(base64);
 
         String temp = "data:image/" + format;

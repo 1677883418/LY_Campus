@@ -1,7 +1,5 @@
 package com.nepenthe.controller;
 
-import cn.hutool.json.JSONObject;
-import cn.hutool.json.JSONUtil;
 import com.nepenthe.pojo.Students;
 import com.nepenthe.service.StudentService;
 import com.nepenthe.utils.Result;
@@ -31,13 +29,13 @@ public class StudentController {
 
     /**
      * 查询全部的学生,并且返回到一个学生展示页面
+     *
+     * @return
      */
     @GetMapping("/allStudent")
     @ApiOperation(value = "查询全部用户信息", notes = "查询全表学生")
-    public String list(Model model, HttpServletResponse res) {
-        res.setContentType("application/json; charset=UTF-8");
-        List<Students> students = studentService.queryAllStudent();
-        return JSONUtil.toJsonStr(students);
+    public Result<List<Students>> list(Model model, HttpServletResponse res) {
+        return Result.ofSuccess(studentService.queryAllStudent());
     }
 
     /**

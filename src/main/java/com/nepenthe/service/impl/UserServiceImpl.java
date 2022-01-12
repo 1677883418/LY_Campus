@@ -1,7 +1,8 @@
-package com.nepenthe.service;
+package com.nepenthe.service.impl;
 
 import com.nepenthe.dao.UserMapper;
 import com.nepenthe.pojo.User;
+import com.nepenthe.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

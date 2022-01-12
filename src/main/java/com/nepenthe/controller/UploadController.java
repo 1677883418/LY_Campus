@@ -3,6 +3,7 @@ package com.nepenthe.controller;
 import com.nepenthe.utils.AliyunOSSUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -13,7 +14,8 @@ import org.springframework.web.multipart.MultipartFile;
 @RequestMapping("/Upload")
 @Api(tags = "OSS上传接口")
 public class UploadController {
-
+    @Autowired
+    AliyunOSSUtil aliyunOSSUtil;
     /**
      * 头像上传
      *
@@ -25,7 +27,7 @@ public class UploadController {
         String fileName = avatar.getOriginalFilename();
         fileName = fileName.replace(fileName.substring(0, fileName.indexOf(".")), openId);
         try {
-            String uploadUrl = AliyunOSSUtil.upload(avatar, "avatar", fileName);
+            String uploadUrl = aliyunOSSUtil.upload(avatar, "avatar", fileName);
             return uploadUrl;
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -44,7 +46,7 @@ public class UploadController {
         String fileName = dynamicImage.getOriginalFilename();
         fileName = fileName.replace(fileName.substring(0, fileName.indexOf(".")), dynamicId);
         try {
-            String uploadUrl = AliyunOSSUtil.upload(dynamicImage, "avatar", fileName);
+            String uploadUrl = aliyunOSSUtil.upload(dynamicImage, "avatar", fileName);
             return uploadUrl;
         } catch (Exception ex) {
             ex.printStackTrace();

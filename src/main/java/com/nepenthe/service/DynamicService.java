@@ -1,5 +1,6 @@
 package com.nepenthe.service;
 
+import com.nepenthe.dto.DynamicDTO;
 import com.nepenthe.pojo.Dynamic;
 import org.apache.ibatis.annotations.Param;
 
@@ -10,10 +11,10 @@ import java.util.List;
  */
 public interface DynamicService {
     /**
-     * @param dynamic
+     * @param dynamicDTO
      * @return 添加的动态
      */
-    Integer addDynamic(@Param("dynamic") Dynamic dynamic);
+    Integer addDynamic(@Param("dynamic") DynamicDTO dynamicDTO);
 
     /**
      * @param dynamicId 动态Id
