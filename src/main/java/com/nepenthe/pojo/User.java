@@ -1,26 +1,48 @@
 package com.nepenthe.pojo;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.extension.activerecord.Model;
+import com.baomidou.mybatisplus.annotation.TableId;
+
+import java.io.Serializable;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.EqualsAndHashCode;
 
 /**
- * @author goodsir
+ * <p>
+ *
+ * </p>
+ *
+ * @author LengAo
+ * @since 2022-01-12
  */
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
-@ApiModel("微信用户")
-public class User {
-    @ApiModelProperty("用户id")
-    Integer id;
-    @ApiModelProperty("昵称")
-    String nickName;
-    @ApiModelProperty("头像链接")
+@EqualsAndHashCode(callSuper = false)
+@ApiModel(value = "User对象", description = "")
+public class User extends Model<User> {
+
+    private static final long serialVersionUID = 1L;
+
+    @TableId(type=IdType.AUTO)
+    @ApiModelProperty(value = "Id")
+    private Integer id;
+
+    @ApiModelProperty(value = "昵称")
+    private String nickName;
+
+    @ApiModelProperty(value = "头像地址")
     private String avatarUrl;
-    @ApiModelProperty("登录唯一凭证")
+
+    @ApiModelProperty(value = "用户唯一标识")
     private String openId;
+
+
+    @Override
+    protected Serializable pkVal() {
+        return null;
+    }
+
 }

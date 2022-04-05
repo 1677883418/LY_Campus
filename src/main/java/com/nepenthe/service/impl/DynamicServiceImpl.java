@@ -1,58 +1,61 @@
 package com.nepenthe.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.nepenthe.dao.DynamicMapper;
+import com.nepenthe.dao.DynamicImageMapper;
 import com.nepenthe.dto.DynamicDTO;
 import com.nepenthe.pojo.Dynamic;
-import com.nepenthe.pojo.DynamicImage;
 import com.nepenthe.service.DynamicService;
-import com.nepenthe.utils.AliyunOSSUtil;
+import com.nepenthe.vo.DynamicVO;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @author goodsir
  */
 @Service
-public class DynamicServiceImpl implements DynamicService {
+public class DynamicServiceImpl extends ServiceImpl<DynamicMapper, Dynamic> implements DynamicService {
     @Autowired
     private DynamicMapper dynamicMapper;
+
     @Autowired
-    private AliyunOSSUtil aliyunOSSUtil;
+    private DynamicImageMapper dynamicImageMapper;
 
     @Override
-    public Integer addDynamic(DynamicDTO dynamicDTO) {
-        ArrayList<String> imgLists = new ArrayList<String>();
-        dynamicDTO.getImgBase64Lists().forEach(imgBase64 -> {
-            //依次上传图片并接收返回的图片链接
-            imgLists.add(aliyunOSSUtil.upload(imgBase64));
-        });
-        Dynamic dynamic = new Dynamic();
-        BeanUtils.copyProperties(dynamicDTO, dynamic);
-        return dynamicMapper.addDynamic(dynamic);
-        //保存之后这个动态的id会回填
-        dynamic.getId();
-        imgLists.forEach(img->{
-            DynamicImage dynamicImage = new DynamicImage();
-            dynamicImage.set
-        });
+    public int addDynamic(Dynamic dynamic) {
+        return dynamicMapper.insert(dynamic);
     }
 
     @Override
     public Integer deleteDynamic(Integer dynamicId) {
-        return dynamicMapper.deleteDynamic(dynamicId);
+        return dynamicMapper.deleteById(dynamicId);
     }
 
     @Override
-    public Integer updateDynamic(Integer dynamicId) {
-        return dynamicMapper.updateDynamic(dynamicId);
+    public Integer updateDynamic(DynamicDTO dynamicDTO) {
+        Dynamic dynamic = new Dynamic();
+        BeanUtils.copyProperties(dynamicDTO, dynamic);
+        return dynamicMapper.updateById(dynamic);
     }
 
     @Override
-    public List<Dynamic> queryAllDynamicByUserId(Integer userId) {
-        return dynamicMapper.queryAllDynamicByUserId(userId);
+    public List<DynamicVO> queryAllDynamicByUserId(Integer userId) {
+        QueryWrapper<Dynamic> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("user_id", userId);
+        return dynamicMapper.selectList(queryWrapper).stream().map(dynamic -> {
+            DynamicVO dynamicVO = new DynamicVO();
+            BeanUtils.copyProperties(dynamic, dynamicVO);
+            return dynamicVO;
+        }).collect(Collectors.toList());
+    }
+
+    @Override
+    public List<DynamicVO> queryAllDynamic() {
+        return dynamicMapper.queryAllDynamic();
     }
 }

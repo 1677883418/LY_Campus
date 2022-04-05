@@ -1,14 +1,13 @@
 package com.nepenthe.dao;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.nepenthe.pojo.User;
-import org.apache.ibatis.annotations.Param;
+import com.nepenthe.pojo.DynamicImage;
 import org.springframework.stereotype.Repository;
 
 /**
- * @author goodsir
+ * @author GoodSir
  */
 @Repository
-public interface UserMapper  extends BaseMapper<User> {
+public interface DynamicImageMapper extends BaseMapper<DynamicImage> {
 
 }

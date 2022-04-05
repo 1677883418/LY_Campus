@@ -16,6 +16,7 @@ import org.springframework.web.multipart.MultipartFile;
 public class UploadController {
     @Autowired
     AliyunOSSUtil aliyunOSSUtil;
+
     /**
      * 头像上传
      *
@@ -44,9 +45,9 @@ public class UploadController {
     @ApiOperation(value = "上传动态图片")
     public String uploadDynamicImage(@RequestParam("dynamicImage") MultipartFile dynamicImage, @RequestParam("dynamicId") String dynamicId) {
         String fileName = dynamicImage.getOriginalFilename();
-        fileName = fileName.replace(fileName.substring(0, fileName.indexOf(".")), dynamicId);
         try {
-            String uploadUrl = aliyunOSSUtil.upload(dynamicImage, "avatar", fileName);
+//            String uploadUrl = aliyunOSSUtil.upload(dynamicImage, "DynamicImage", fileName);
+            String uploadUrl = aliyunOSSUtil.upload(dynamicImage, "DynamicImage/"+dynamicId, fileName);
             return uploadUrl;
         } catch (Exception ex) {
             ex.printStackTrace();

@@ -23,6 +23,4 @@ public class DynamicDTO {
     String openId;
     @ApiModelProperty("动态内容")
     String dynamicText;
-    @ApiModelProperty("动态图片")
-    ArrayList<String> imgBase64Lists;
 }

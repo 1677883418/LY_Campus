@@ -17,8 +17,8 @@ public class Result<R> {
     @ApiModelProperty(value = "响应数据体", position = 4)
     private R data;
 
-    private static String successMsg = "操作成功.";
-    private static String failMsg = "操作失败.";
+    private static String successMsg = "操作成功\uD83D\uDE3C";
+    private static String failMsg = "操作失败\uD83D\uDE3F";
 
     public static <R> Result<R> ofSuccess() {
         return new Result<R>().setSuccess(true).setMsg(successMsg).setData(null);

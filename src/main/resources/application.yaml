@@ -13,16 +13,17 @@ spring:
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     driverClassName: org.mariadb.jdbc.Driver
-    url: jdbc:mariadb://1.117.99.103:3306/campus
+    url: jdbc:mariadb://127.0.0.1:3306/campus
     username: Campus
     password: KWG652J7RHW5S4Ri
-    # 初始化大小，最小，最大
-    initialSize: 1
-    minIdle: 3
-    maxActive: 20
-    # 配置获取连接等待超时的时间
-    maxWait: 60000
-    filters: stat,wall,slf4j
+    druid:
+      # 初始化大小，最小，最大
+      initialSize: 1
+      minIdle: 3
+      maxActive: 20
+      # 配置获取连接等待超时的时间
+      maxWait: 60000
+      filters: stat,wall
 
   servlet:
     #文件上传限制
@@ -40,8 +41,8 @@ mapper:
   identity: MYSQL
 #微信小程序
 wx:
-  appId: wx3912bc23bde5849f
-  secret: f9d04bd4a21553bf55acd58b23855621
+  appId: wxc7a5c611dcdab162
+  secret: b3e510c1b4e1b449eed7f5e5b83db8d6
   #OSS
 OSS:
   file:

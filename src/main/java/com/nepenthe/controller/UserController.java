@@ -30,7 +30,6 @@ public class UserController {
      * controller 调 service层
      */
     @Autowired
-    @Qualifier("userServiceImpl")
     private UserService userService;
 
 

@@ -4,13 +4,16 @@ import com.nepenthe.dto.DynamicDTO;
 import com.nepenthe.pojo.Dynamic;
 import com.nepenthe.service.DynamicService;
 import com.nepenthe.utils.Result;
+import com.nepenthe.vo.DynamicVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.UnsupportedEncodingException;
+import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -20,17 +23,17 @@ import java.util.List;
 @RequestMapping("/Dynamic")
 @Api(tags = "动态")
 public class DynamicController {
-
     @Autowired
-    @Qualifier("dynamicServiceImpl")
     private DynamicService dynamicService;
 
     @PostMapping("/addDynamic")
     @ApiOperation(value = "添加新动态", httpMethod = "POST", notes = "添加新动态")
-//    public Result<String> addDynamic(@RequestParam("imgBase64") JSONArray imgBase64, @RequestParam("dynamicText") String dynamicText, @RequestParam("openId") String openId, @RequestParam("userId") String userId) {
-    //这个int其实不用反，前端也用不到
-    public Result<Integer> addDynamic(@RequestBody DynamicDTO dynamicDTO) throws UnsupportedEncodingException {
-        return Result.ofSuccess(dynamicService.addDynamic(dynamicDTO));
+    public Result<Object> addDynamic(@RequestBody DynamicDTO dynamicDTO) {
+        Dynamic dynamic = new Dynamic();
+        BeanUtils.copyProperties(dynamicDTO, dynamic);
+        dynamic.setDynamicTime(LocalDateTime.now());
+        dynamicService.addDynamic(dynamic);
+        return Result.ofSuccess(dynamic);
     }
 
     @GetMapping("/deleteDynamic")
@@ -41,13 +44,19 @@ public class DynamicController {
 
     @PostMapping("/updateDynamic")
     @ApiOperation(value = "修改动态", httpMethod = "POST", notes = "根据动态ID修改动态")
-    public Result<Integer> updateDynamic(Integer dynamicId) {
-        return Result.ofSuccess(dynamicService.updateDynamic(dynamicId));
+    public Result<Integer> updateDynamic(DynamicDTO dynamicDTO) {
+        return Result.ofSuccess(dynamicService.updateDynamic(dynamicDTO));
     }
 
-    @GetMapping("/queryAllDynamic/{userId}")
+    @GetMapping("/queryAllDynamicByUserId/{userId}")
     @ApiOperation(value = "查询全部动态", httpMethod = "GET", notes = "根据用户ID查询全部动态")
-    public Result<List<Dynamic>> queryAllDynamicByUserId(@PathVariable Integer userId) {
+    public Result<List<DynamicVO>> queryAllDynamicByUserId(@PathVariable Integer userId) {
         return Result.ofSuccess(dynamicService.queryAllDynamicByUserId(userId));
+    }
+
+    @GetMapping("/queryAllDynamic")
+    @ApiOperation(value = "查询全部动态", httpMethod = "GET", notes = "根据用户ID查询全部动态")
+    public Result<List<DynamicVO>> queryAllDynamic() {
+        return Result.ofSuccess(dynamicService.queryAllDynamic());
     }
 }

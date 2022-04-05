@@ -1,8 +1,12 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper
-        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.nepenthe.dao.UserMapper">
+    <resultMap id="BaseResultMap" type="com.nepenthe.pojo.User">
+        <result column="id" property="id"/>
+        <result column="nick_name" property="nickName"/>
+        <result column="avatar_url" property="avatarUrl"/>
+        <result column="open_id" property="openId"/>
+    </resultMap>
     <insert id="addUser" parameterType="com.nepenthe.pojo.User">
         insert into campus.user(id, nick_name, avatar_url, openid)
         values (#{user.id}, #{user.nickName}, #{user.avatarUrl}, #{user.openId});

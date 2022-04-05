@@ -1,30 +1,56 @@
 package com.nepenthe.pojo;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import com.alibaba.druid.sql.visitor.functions.Now;
+import com.baomidou.mybatisplus.annotation.FieldFill;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.extension.activerecord.Model;
 
 import java.time.LocalDateTime;
-import java.util.List;
+
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableField;
+
+import java.io.Serializable;
+
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 /**
- * @author goodsir
+ * <p>
+ *
+ * </p>
+ *
+ * @author LengAo
+ * @since 2022-01-12
  */
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
-@ApiModel
-public class Dynamic {
-    @ApiModelProperty("动态id")
-    Integer id;
-    @ApiModelProperty("用户id")
-    Integer userId;
-    @ApiModelProperty("动态内容")
-    String dynamicText;
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    @ApiModelProperty("动态时间")
+@EqualsAndHashCode(callSuper = false)
+@ApiModel(value = "Dynamic对象", description = "")
+public class Dynamic extends Model<Dynamic> {
+
+    private static final long serialVersionUID = 1L;
+
+    @TableId(type = IdType.AUTO)
+    @ApiModelProperty(value = "Id")
+    private Integer id;
+
+    @ApiModelProperty(value = "发动态用户id")
+    private Integer userId;
+
+    @ApiModelProperty(value = "动态文本")
+    @TableField("dynamic_text")
+    private String dynamicText;
+
+    @ApiModelProperty(value = "动态时间")
+    @TableField(value = "dynamic_time")
     private LocalDateTime dynamicTime;
+
+
+    @Override
+    protected Serializable pkVal() {
+        return null;
+    }
+
 }

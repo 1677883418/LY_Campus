@@ -1,12 +1,13 @@
 package com.nepenthe.service;
 
+import com.baomidou.mybatisplus.extension.service.IService;
 import com.nepenthe.pojo.User;
 import org.apache.ibatis.annotations.Param;
 
 /**
  * @author goodsir
  */
-public interface UserService {
+public interface UserService  extends IService<User> {
     /**
      * 添加新用户
      *
