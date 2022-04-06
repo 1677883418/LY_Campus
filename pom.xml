@@ -201,6 +201,7 @@
                     <fork>true</fork>
                     <!--支持静态文件热部署-->
                     <addResources>true</addResources>
+                    <executable>true</executable>
                 </configuration>
             </plugin>
         </plugins>

@@ -1,53 +1,6 @@
-server:
-  port: 8080
-logging:
-  level:
-    com.exam: DEBUG
-    tk.mybatis: DEBUG
-    org.springframework: WARN
-
+#根据不同的环境(开发环境和生产环境)选额不同的配置文件。开发环境，active的值为dev；生产环境，active的值为prd
+#并且要保证在resource目录下创建了application-dev.yml和application-prd.yml两个环境的配置文件。
+#项目上线时只需改一下active的值即可使用生产环境配置文件
 spring:
-  http:
-    multipart:
-      enabled: false
-  datasource:
-    type: com.alibaba.druid.pool.DruidDataSource
-    driverClassName: org.mariadb.jdbc.Driver
-    url: jdbc:mariadb://127.0.0.1:3306/campus
-    username: Campus
-    password: KWG652J7RHW5S4Ri
-    druid:
-      # 初始化大小，最小，最大
-      initialSize: 1
-      minIdle: 3
-      maxActive: 20
-      # 配置获取连接等待超时的时间
-      maxWait: 60000
-      filters: stat,wall
-
-  servlet:
-    #文件上传限制
-    multipart:
-      enabled: true
-      max-file-size: 20MB
-      max-request-size: 10MB
-mybatis:
-  type-aliases-package: com.nepenthe.pojo
-  mapper-locations: classpath:mapper/*.xml
-  configuration:
-    map-underscore-to-camel-case: true
-mapper:
-  not-empty: false
-  identity: MYSQL
-#微信小程序
-wx:
-  appId: wxc7a5c611dcdab162
-  secret: b3e510c1b4e1b449eed7f5e5b83db8d6
-  #OSS
-OSS:
-  file:
-    endpoint: oss-accelerate.aliyuncs.com #不同的服务器，地址不同
-    keyId: LTAI5tSiXjhHrqz7GKaGjCLX #AccessKey  / 刷新Token
-    keySecret: ik5nxDieyShio8HS5a9v5bJP0As6Tl #SecretKey
-    bucketName: zxy1677883418 #Server 存储端 Endpoint
-    fileHost: Campus  #云存储使用的目录
+  profiles:
+    active: prd
