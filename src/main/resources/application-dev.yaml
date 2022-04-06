@@ -15,7 +15,7 @@ spring:
     driverClassName: org.mariadb.jdbc.Driver
     url: jdbc:mariadb://127.0.0.1:3306/campus
     username: root
-    password: Zxy020817@@..
+    password: *************
     druid:
       # 初始化大小，最小，最大
       initialSize: 1
@@ -41,13 +41,13 @@ mapper:
   identity: MYSQL
 #微信小程序
 wx:
-  appId: wxc7a5c611dcdab162
-  secret: b3e510c1b4e1b449eed7f5e5b83db8d6
+  appId:  *************
+  secret:  *************
   #OSS
 OSS:
   file:
     endpoint: oss-accelerate.aliyuncs.com #不同的服务器，地址不同
-    keyId: LTAI5tSiXjhHrqz7GKaGjCLX #AccessKey  / 刷新Token
-    keySecret: ik5nxDieyShio8HS5a9v5bJP0As6Tl #SecretKey
-    bucketName: zxy1677883418 #Server 存储端 Endpoint
+    keyId:  ************* #AccessKey  / 刷新Token
+    keySecret:  ************* #SecretKey
+    bucketName:  ************* #Server 存储端 Endpoint
     fileHost: Campus  #云存储使用的目录
