@@ -36,7 +36,6 @@
  
 # IntelliJ
 /out/
- 
 # mpeltonen/sbt-idea plugin
 .idea_modules/
  
@@ -56,4 +55,5 @@ pom.xml.next
 release.properties
 dependency-reduced-pom.xml
 buildNumber.properties
-.mvn/timing.properties
+!/src/main/resources/application-prd.yaml
+!/src/main/resources/application-dev.yaml
