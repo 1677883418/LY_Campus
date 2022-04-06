@@ -1,0 +1,53 @@
+server:
+  port: 8080
+logging:
+  level:
+    com.exam: DEBUG
+    tk.mybatis: DEBUG
+    org.springframework: WARN
+
+spring:
+  http:
+    multipart:
+      enabled: false
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driverClassName: org.mariadb.jdbc.Driver
+    url: jdbc:mariadb://127.0.0.1:3306/campus
+    username: ***
+    password: ***
+    druid:
+      # 初始化大小，最小，最大
+      initialSize: 1
+      minIdle: 3
+      maxActive: 20
+      # 配置获取连接等待超时的时间
+      maxWait: 60000
+      filters: stat,wall
+
+  servlet:
+    #文件上传限制
+    multipart:
+      enabled: true
+      max-file-size: 20MB
+      max-request-size: 10MB
+mybatis:
+  type-aliases-package: com.nepenthe.pojo
+  mapper-locations: classpath:mapper/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
+mapper:
+  not-empty: false
+  identity: MYSQL
+#微信小程序
+wx:
+  appId: wxc***cdab162
+  secret: ***
+  #OSS
+OSS:
+  file:
+    endpoint: oss-accelerate.aliyuncs.com #不同的服务器，地址不同
+    keyId: *** #AccessKey  / 刷新Token
+    keySecret: *** #SecretKey
+    bucketName: *** #Server 存储端 Endpoint
+    fileHost: Campus  #云存储使用的目录
