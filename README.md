@@ -4,7 +4,7 @@
 
 SSM+小程序练手项目，后期可能会随着学习的深入重构。(*PS*已经重构了,现在是Sring Boot版本)
 
-小程序端地址:https://github.com/1677883418/CampusClientp[
+小程序端地址:https://github.com/1677883418/CampusClient
 
 ## 软件架构
 
